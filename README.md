@@ -180,7 +180,7 @@ setUp که همیشه اول هر تست قبل از بقیه method ها اجر
 برای انجام این کار از کتابخونه djangorestframework-simplejwt استفاده شده
 
 در فایل settings.py 
-‍‍‍```python
+```python
 'DEFAULT_AUTHENTICATION_CLASSES': (
     'rest_framework_simplejwt.authentication.JWTAuthentication',
 ),
@@ -220,7 +220,7 @@ path("api/token/refresh/", TokenRefreshView.as_view()),
 
 برای اجرای پروژه توسط داکر کافیست از دستور زیر استفاده کنید
 
-‍‍``` bash
+``` bash
 docker compose up --build
 ```
 
