@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Distribution / packaging
+.venv/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SQLite3
+db.sqlite3
+
