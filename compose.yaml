@@ -4,10 +4,16 @@ services:
   web:
     build: .
     container_name: django_app
+    environment:
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_EMAIL: admin@example.com
+      DJANGO_SUPERUSER_PASSWORD: password
+      REDIS_URL: redis://redis:6379/0
     command: >
       bash -c "
       python manage.py makemigrations &&
       python manage.py migrate &&
+      python manage.py createsuperuser --noinput &&
       python manage.py runserver 0.0.0.0:8000
       "
     volumes:
@@ -16,8 +22,6 @@ services:
       - "8000:8000"
     depends_on:
       - redis
-    environment:
-      - REDIS_URL=redis://redis:6379/0
 
   redis:
     image: redis:7-alpine
