@@ -225,3 +225,40 @@ docker compose up --build
 ```
 
 سپس به ادرس ***http://127.0.0.1:8000*** بروید
+
+* توجه
+username سوپر یوزر جنگو: admin
+password سوپر یوزر جنگو: password
+
+## اجرای پروژه بدون جنگو
+
+ابتدا virtual environment پایتون برای خود میسازید سپس کتابخانه های مورد نیاز را از فایل requirments.txt نصب کرده
+برای کار با کتابخانه Pillow ممکن است نیاز به نصب پکیج های اضافه داشته باشید که از این لینک میتوانید لیست انها را ببینید
+
+https://hugovk-pillow.readthedocs.io/en/stable/installation.html#external-libraries
+
+سپس نیاز به اجرای دستورات زیر دارید
+``` bash
+python manage..py makemigrations
+python manage.py migrate
+```
+سپس سوپر یوزر django را با دستور زیر باید بسازید
+``` bash
+python manage.py createsuperuser
+```
+
+سپس با دستور زیر celery را اجرا میکنید
+
+``` bash
+celery -A customic worker --loglevel=info
+```
+
+و در نهایت با دستور زیر سرور پایتون را اجرا میکنید
+
+``` bash
+python manage.py runserver
+```
+
+و به ادرس 127.0.0.1:8000 میروید
+
+* توجه داشته باشید که redis-server باید در حال اجرا باشد
